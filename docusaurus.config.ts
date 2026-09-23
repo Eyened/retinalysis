@@ -2,20 +2,16 @@ import type { Config } from "@docusaurus/types";
 import fs from "node:fs";
 import path from "node:path";
 import { parse } from "yaml";
-
 const blueprint = parse(
   fs.readFileSync(path.join(__dirname, "blueprint.yaml"), "utf8"),
 );
-const visible = blueprint.pages.filter(
-  (p: { status: string }) => p.status !== "draft",
-);
-const sections = visible.filter(
-  (p: { parent: string | null; id: string }) =>
-    p.parent === null && p.id !== "home",
+const sections = blueprint.pages.filter(
+  (p: { status: string; parent: string | null }) =>
+    p.status !== "draft" && p.parent === null,
 );
 const config: Config = {
-  title: "retinalysis",
-  tagline: "See more. Understand more.",
+  title: "Retinalysis",
+  tagline: "Tools for retinal image analysis",
   url: "https://eyened.github.io",
   baseUrl: "/retinalysis/",
   organizationName: "Eyened",
@@ -30,9 +26,13 @@ const config: Config = {
     [
       "classic",
       {
-        docs: false,
+        docs: {
+          path: "docs",
+          routeBasePath: "/",
+          sidebarPath: require.resolve("./sidebars.cjs"),
+        },
         blog: false,
-        pages: { mdxPageComponent: "@site/src/components/MDXPage.tsx" },
+        pages: false,
         theme: { customCss: "./src/css/custom.css" },
       },
     ],
@@ -40,43 +40,25 @@ const config: Config = {
   themeConfig: {
     colorMode: { defaultMode: "light", disableSwitch: true },
     navbar: {
-      title: "retinalysis",
-      logo: { alt: "", src: "img/mark.svg" },
+      title: "Retinalysis",
       items: [
-        ...sections.map((p: { title: string; route: string }) => ({
-          label: p.title,
-          to: p.route,
-          position: "right",
+        ...sections.map((p: { id: string; title: string }) => ({
+          type: "docSidebar",
+          sidebarId: p.id,
+          label: p.id === "home" ? "Home" : p.title,
+          position: "left",
         })),
         {
-          href: "https://github.com/Eyened",
-          label: "GitHub ↗",
+          href: "https://github.com/Eyened/retinalysis",
+          label: "GitHub",
           position: "right",
         },
       ],
     },
     footer: {
       style: "light",
-      links: [
-        {
-          title: "Explore",
-          items: sections.map((p: { title: string; route: string }) => ({
-            label: p.title,
-            to: p.route,
-          })),
-        },
-        {
-          title: "Elsewhere",
-          items: [
-            { label: "Eyened on GitHub", href: "https://github.com/Eyened" },
-            {
-              label: "VascX model releases",
-              href: "https://huggingface.co/Eyened/vascx",
-            },
-          ],
-        },
-      ],
-      copyright: "Retinalysis · Tools, models & datasets for retinal research.",
+      copyright:
+        "Retinalysis · Tools, models and datasets for retinal research.",
     },
   },
 };

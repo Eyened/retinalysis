@@ -1,6 +1,10 @@
-# Maintaining the Retinalysis presentation site
+# Maintaining the Retinalysis research site
 
 This repository presents research tools. Detailed usage, installation and API documentation belong in the individual package repositories. `blueprint.yaml` is the authoritative catalogue and editorial brief; `provenance.json` records the evidence actually used. Neither belongs in the public interface.
+
+## Layout and tone
+
+Use the standard Docusaurus documentation template. Top-level blueprint entries belong in the top navbar; descendants belong in that section’s left sidebar, preserving their hierarchy. Keep `sidebars.cjs` derived from the blueprint. Use plain research and engineering prose, ordinary headings and lists. Do not introduce promotional heroes, slogans, cards, custom display typography or decorative imagery. Scientific figures belong with the relevant technical content.
 
 ## Scope comes first
 
@@ -8,7 +12,7 @@ This repository presents research tools. Detailed usage, installation and API do
 - For an unscoped “update the website”, run `npm run content:status`, report candidate pages and ask which to update. Do not edit content while waiting.
 - Within the authorized scope, read the corresponding blueprint entries and source files before editing. Change only those pages, their selected assets/provenance and necessary catalogue/navigation summaries. Keep shared design and unrelated pages unchanged. Do not refresh unrelated fingerprints or review dates.
 - Read sibling repositories without modifying them. Resolve `project_dir` relative to this repository, never relative to the shell working directory.
-- New entries start as `draft`. Drafts have no file in `src/pages` and never enter public navigation. A request to prepare a draft does not itself authorize publication: retain draft status unless publication is included in the requested scope. Stage draft prose outside `src/pages` if necessary.
+- New entries start as `draft`. Drafts have no file in `docs` and never enter public navigation. A request to prepare a draft does not itself authorize publication: retain draft status unless publication is included in the requested scope. Stage draft prose outside `docs` if necessary.
 
 ## Evidence and editorial rules
 

@@ -1,35 +1,37 @@
 ---
+id: retinalysis-inference
+title: retinalysis-inference
 slug: /software/retinalysis-inference
 ---
 import Link from '@docusaurus/Link';
-import {Page, Figure, Resources, CardGrid, HomeHero, SectionHeader, Publication} from '@site/src/components/Presentation';
+import {Page, Figure, Resources, Catalogue, Publication} from '@site/src/components/Presentation';
 
 <Page id="retinalysis-inference">
 
 <Resources id="retinalysis-inference" />
 
-## Apply model releases to your images
+## Purpose
 
 Retinalysis inference brings released retinal models into an image-analysis workflow. It combines model loading, the expected preprocessing and ensemble prediction, so research code can work with a consistent interface.
 
 <div className="facts">
-<div><h3>Work with</h3><p>Model releases and image datasets, supplied as tables or preprocessed inputs.</p></div>
-<div><h3>Obtain</h3><p>Predictions, ensemble aggregates and inspectable model intermediates.</p></div>
+<div><h3>Inputs</h3><p>Model releases and image datasets, supplied as tables or preprocessed inputs.</p></div>
+<div><h3>Outputs</h3><p>Predictions, ensemble aggregates and inspectable model intermediates.</p></div>
 </div>
 
-## Use predictions—and inspect how they were produced
+## Capabilities
 
 - **Shared preprocessing:** retain the geometry and input preparation expected by a model release.
 - **Ensemble outputs:** work with aggregated predictions or inspect member-level outputs.
 - **Dataset workflows:** apply releases to image collections rather than only individual tensors.
 - **Runtime settings:** adjust supported inference options, such as augmentation or windowed processing, for the selected release.
 
-## Keep spatial interpretation explicit
+## Output geometry and limitations
 
 High-level spatial outputs use the package’s canonical preprocessed geometry, normally 1024 × 1024 for fundus workflows. They are not automatically mapped back to the original photograph. Lower-level prediction outputs can use model-specific geometry, so follow the release documentation when interpreting coordinates.
 
 This is an execution library. Validation performance and suitable populations belong to the individual model and evaluation study. Consult the release documentation for preprocessing and hardware requirements.
 
-<Link className="text-link" to="/models">Explore the model catalogue →</Link>
+<Link className="text-link" to="/models">Model catalogue</Link>
 
 </Page>

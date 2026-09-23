@@ -76,6 +76,8 @@ test("keyboard navigation and mobile menu", async ({ page }, info) => {
     await toggle.focus();
     await page.keyboard.press("Enter");
     await expect(page.locator(".navbar-sidebar")).toBeVisible();
+    const back = page.getByRole("button", { name: /Back to main menu/ });
+    if (await back.isVisible()) await back.click();
     await page
       .locator(".navbar-sidebar")
       .getByRole("link", { name: "Software", exact: true })
@@ -88,4 +90,49 @@ test("keyboard navigation and mobile menu", async ({ page }, info) => {
     await page.keyboard.press("Enter");
   }
   await expect(page).toHaveURL(/\/retinalysis\/software\/?$/);
+});
+
+test("section hierarchy uses native docs sidebars", async ({ page }, info) => {
+  await page.goto("/retinalysis/models/color-fundus/od-segmentation/");
+  const navbar = page.locator(".navbar");
+  await expect(
+    navbar.getByRole("link", { name: "retinalysis-vascx", exact: true }),
+  ).toHaveCount(0);
+  if (info.project.name === "mobile")
+    await page.getByRole("button", { name: "Toggle navigation bar" }).click();
+  const sidebar =
+    info.project.name === "mobile"
+      ? page.locator(".navbar-sidebar")
+      : page.locator("aside");
+  await expect(
+    sidebar.getByRole("link", { name: "Color fundus imaging", exact: true }),
+  ).toBeVisible();
+  for (const name of [
+    "OD segmentation",
+    "Fovea localisation",
+    "A/V segmentation",
+    "Quality estimation",
+    "OCT",
+  ])
+    await expect(
+      sidebar.getByRole("link", { name, exact: true }),
+    ).toBeVisible();
+  await expect(
+    sidebar
+      .locator("a.menu__link--active")
+      .filter({ hasText: "OD segmentation" }),
+  ).toBeVisible();
+  if (info.project.name === "desktop") {
+    await navbar.getByRole("link", { name: "Software", exact: true }).click();
+    await expect(
+      page
+        .locator("aside")
+        .getByRole("link", { name: "retinalysis-vascx", exact: true }),
+    ).toBeVisible();
+    await expect(
+      page
+        .locator("aside")
+        .getByRole("link", { name: "OD segmentation", exact: true }),
+    ).toHaveCount(0);
+  }
 });

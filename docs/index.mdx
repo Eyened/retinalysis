@@ -1,0 +1,31 @@
+---
+id: home
+title: Retinalysis
+slug: /
+---
+import Link from '@docusaurus/Link';
+import {Page, Catalogue} from '@site/src/components/Presentation';
+
+<Page id="home">
+
+Retinalysis brings together software, deep learning models and datasets for robust, explainable analysis of retinal images. This site provides researchers and engineers with an overview of the available tools and their supporting evidence.
+
+## Software
+
+The packages cover vascular measurements, image registration, model training and inference. Detailed installation instructions, APIs and examples are maintained in each package's documentation.
+
+<Catalogue parent="software" />
+
+## Deep learning models
+
+The [model catalogue](/models) is organized by imaging modality. Model cards for color fundus imaging and OCT are forthcoming.
+
+## Datasets
+
+The [RAV dataset](/datasets/rav) provides color fundus images with artery–vein annotations. Its page describes the dataset, annotation agreement, publication and access conditions.
+
+## Evidence and scope
+
+Software capabilities and model validation are described separately. Consult the linked publications and model-specific evaluations when assessing suitability for a research study.
+
+</Page>

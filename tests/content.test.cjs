@@ -20,6 +20,7 @@ function fixture(t) {
     "blueprint.yaml",
     "provenance.json",
     "src",
+    "docs",
     "static",
     "sources",
     "scripts",
@@ -42,7 +43,7 @@ test("new draft is discoverable but never enters public catalogue", (t) => {
     id: "new-tool",
     title: "New tool",
     route: "/software/new-tool",
-    page_file: "src/pages/software/new-tool.mdx",
+    page_file: "docs/software/new-tool.mdx",
     status: "draft",
   });
   assert.deepEqual(validate(data), []);
@@ -56,10 +57,7 @@ test("new draft is discoverable but never enters public catalogue", (t) => {
       .reasons.join(" "),
     /NEW.*DRAFT/,
   );
-  fs.writeFileSync(
-    path.join(data.dir, "src/pages/software/new-tool.mdx"),
-    "draft",
-  );
+  fs.writeFileSync(path.join(data.dir, "docs/software/new-tool.mdx"), "draft");
   assert.ok(validate(data).some((e) => e.includes("Draft would publish")));
 });
 test("changed and missing source fingerprints are candidates, not rewrites", (t) => {

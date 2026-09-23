@@ -1,25 +1,27 @@
 ---
+id: retinalysis-registration
+title: retinalysis-registration
 slug: /software/retinalysis-registration
 ---
 import Link from '@docusaurus/Link';
-import {Page, Figure, Resources, CardGrid, HomeHero, SectionHeader, Publication} from '@site/src/components/Presentation';
+import {Page, Figure, Resources, Catalogue, Publication} from '@site/src/components/Presentation';
 
 <Page id="retinalysis-registration">
 
 <Resources id="retinalysis-registration" />
 
-## Follow the same structures across images
+## Image registration
 
 Retinalysis registration estimates a spatial transformation between retinal images. This makes it useful when a study needs to align photographs or transfer image coordinates and annotations into a shared frame.
 
 <div className="facts">
-<div><h3>Work with</h3><p>A reference image and a target image, with optional spatial annotations.</p></div>
-<div><h3>Obtain</h3><p>A transformation that can be applied to images, masks and point coordinates.</p></div>
+<div><h3>Inputs</h3><p>A reference image and a target image, with optional spatial annotations.</p></div>
+<div><h3>Outputs</h3><p>A transformation that can be applied to images, masks and point coordinates.</p></div>
 </div>
 
 <Figure id="registration-overlay" />
 
-## Classical computer vision, no GPU required
+## Method
 
 The method enhances vascular structure, detects and matches SIFT features, and estimates an image transformation. The implementation supports projective alignment with optional quadratic refinement. The example notebook demonstrates transforming a fundus image, a mask and point coordinates.
 

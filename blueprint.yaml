@@ -12,31 +12,28 @@ pages:
   parent: null
   route: /
   status: published
-  page_file: src/pages/index.mdx
+  page_file: docs/index.mdx
   summary: Tools, models and datasets for robust, explainable retinal image analysis.
   project_dir: null
   sources: []
   publications: []
-  figures:
-  - retina-hero
-  - vascx-caliber
-  figure_policy: selected
-  instructions: Present the maintainer mission and published catalogue. Reuse selected assets. Do not
-    claim all packages or new model releases are clinically validated.
+  figures: []
+  figure_policy: none
+  instructions: Introduce the maintainer mission and published catalogue in concise technical prose. Use
+    the standard Docusaurus docs layout. No promotional hero, slogans or cards.
   links: []
   depends_on:
   - software
   - models
   - datasets
-  asset_instructions: Reuse retina-hero from ../rtnls_registration/sample/image1.png and vascx-caliber
-    from the selected VascX documentation figures.
+  asset_instructions: No figures on the home page.
 - id: software
   title: Software
   parent: null
   route: /software
   status: published
-  page_file: src/pages/software.mdx
-  summary: From images to measurements. Find the tools for your next study.
+  page_file: docs/software.mdx
+  summary: Software for retinal image analysis, registration, model training and inference.
   project_dir: null
   sources: []
   publications: []
@@ -55,8 +52,8 @@ pages:
   parent: software
   route: /software/retinalysis-vascx
   status: published
-  page_file: src/pages/software/retinalysis-vascx.mdx
-  summary: Explainable vascular measurements, grounded in retinal anatomy.
+  page_file: docs/software/retinalysis-vascx.mdx
+  summary: Vascular biomarker measurements and visualizations.
   project_dir: ../rtnls_vascx
   sources:
   - README.md
@@ -85,8 +82,8 @@ pages:
   parent: software
   route: /software/retinalysis-registration
   status: published
-  page_file: src/pages/software/retinalysis-registration.mdx
-  summary: Bring retinal images into a common frame of reference.
+  page_file: docs/software/retinalysis-registration.mdx
+  summary: Spatial registration of retinal images.
   project_dir: ../rtnls_registration
   sources:
   - README.md
@@ -118,8 +115,8 @@ pages:
   parent: software
   route: /software/retinalysis-models
   status: published
-  page_file: src/pages/software/retinalysis-models.mdx
-  summary: A common framework for developing retinal deep learning models.
+  page_file: docs/software/retinalysis-models.mdx
+  summary: Training, evaluation and release of retinal deep learning models.
   project_dir: ../rtnls_models
   sources:
   - README.md
@@ -139,8 +136,8 @@ pages:
   parent: software
   route: /software/retinalysis-inference
   status: published
-  page_file: src/pages/software/retinalysis-inference.mdx
-  summary: Run model releases with consistent preprocessing and inspectable outputs.
+  page_file: docs/software/retinalysis-inference.mdx
+  summary: Preprocessing and prediction using model releases.
   project_dir: ../rtnls_inference
   sources:
   - README.md
@@ -164,7 +161,7 @@ pages:
   parent: null
   route: /models
   status: published
-  page_file: src/pages/models.mdx
+  page_file: docs/models.mdx
   summary: Explore the model catalogue by imaging modality.
   project_dir: null
   sources: []
@@ -182,7 +179,7 @@ pages:
   parent: models
   route: /models/color-fundus
   status: published
-  page_file: src/pages/models/color-fundus.mdx
+  page_file: docs/models/color-fundus.mdx
   summary: ''
   project_dir: null
   sources: []
@@ -202,7 +199,7 @@ pages:
   parent: color-fundus
   route: /models/color-fundus/od-segmentation
   status: placeholder
-  page_file: src/pages/models/color-fundus/od-segmentation.mdx
+  page_file: docs/models/color-fundus/od-segmentation.mdx
   summary: ''
   project_dir: null
   sources: []
@@ -219,7 +216,7 @@ pages:
   parent: color-fundus
   route: /models/color-fundus/fovea-localisation
   status: placeholder
-  page_file: src/pages/models/color-fundus/fovea-localisation.mdx
+  page_file: docs/models/color-fundus/fovea-localisation.mdx
   summary: ''
   project_dir: null
   sources: []
@@ -236,7 +233,7 @@ pages:
   parent: color-fundus
   route: /models/color-fundus/av-segmentation
   status: placeholder
-  page_file: src/pages/models/color-fundus/av-segmentation.mdx
+  page_file: docs/models/color-fundus/av-segmentation.mdx
   summary: ''
   project_dir: null
   sources: []
@@ -253,7 +250,7 @@ pages:
   parent: color-fundus
   route: /models/color-fundus/quality-estimation
   status: placeholder
-  page_file: src/pages/models/color-fundus/quality-estimation.mdx
+  page_file: docs/models/color-fundus/quality-estimation.mdx
   summary: ''
   project_dir: null
   sources: []
@@ -270,7 +267,7 @@ pages:
   parent: models
   route: /models/oct
   status: placeholder
-  page_file: src/pages/models/oct.mdx
+  page_file: docs/models/oct.mdx
   summary: ''
   project_dir: null
   sources: []
@@ -286,7 +283,7 @@ pages:
   parent: null
   route: /datasets
   status: published
-  page_file: src/pages/datasets.mdx
+  page_file: docs/datasets.mdx
   summary: Reference data for retinal image research.
   project_dir: null
   sources: []
@@ -303,8 +300,8 @@ pages:
   parent: datasets
   route: /datasets/rav
   status: published
-  page_file: src/pages/datasets/rav.mdx
-  summary: Real-world image diversity. Carefully annotated vasculature.
+  page_file: docs/datasets/rav.mdx
+  summary: Color fundus images with artery–vein annotations.
   project_dir: ../paper_rav
   sources: []
   publications:

@@ -1,6 +1,6 @@
 # Retinalysis
 
-A presentation site for researchers exploring tools, deep learning models and datasets for robust, explainable retinal image analysis.
+A research site for researchers and engineers exploring tools, deep learning models and datasets for robust, explainable retinal image analysis.
 
 Target: [Eyened/retinalysis](https://github.com/Eyened/retinalysis) · [website](https://eyened.github.io/retinalysis/)
 
@@ -19,12 +19,12 @@ npx playwright install chromium
 npm run test:browser
 ```
 
-Docusaurus serves standalone React/MDX pages with docs and blog disabled. The production base path is `/retinalysis/`. Use Docusaurus `Link` and `useBaseUrl` for site links/assets. CI builds from this repository alone; sibling repositories are optional editorial sources, never build dependencies.
+Docusaurus uses its standard documentation theme with top-level sections in the navbar and a separate left sidebar for each section. Blog and standalone pages are disabled. The production base path is `/retinalysis/`. Use Docusaurus `Link` and `useBaseUrl` for site links/assets. CI builds from this repository alone; sibling repositories are optional editorial sources, never build dependencies.
 
 ## Content workflow
 
 1. Maintain documentation and validated figures in the source package.
-2. Add or adjust a page brief in `blueprint.yaml`. New entries start as `draft`; use a unique ID, stable route and future MDX path, but do not create a draft inside `src/pages`.
+2. Add or adjust a page brief in `blueprint.yaml`. New entries start as `draft`; use a unique ID, stable route and future MDX path, but do not create a draft inside `docs`.
 3. Request an AI update for explicit page IDs or a defined group. Follow [AGENTS.md](AGENTS.md). Source changes alone do not authorize rewrites.
 4. Review the prepared content, provenance, figures and evidence gaps. Publish the entry only when requested and ready.
 
@@ -41,8 +41,9 @@ Status compares source and brief fingerprints, page content and catalogue depend
 
 ## Layout
 
-- `src/pages/`: finished MDX content and stable routes.
-- `src/components/`, `src/css/`: shared presentation design.
+- `docs/`: finished MDX content and stable routes.
+- `sidebars.cjs`: section sidebars generated from the blueprint hierarchy.
+- `src/components/`, `src/css/`: shared content components and minimal figure styling.
 - `static/img/`: selected web-sized scientific figures and branding.
 - `sources/`: retained publication source material for reproducible provenance.
 - `scripts/`: validation, read-only status and explicit review recording.

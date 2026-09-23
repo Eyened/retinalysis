@@ -4,25 +4,12 @@
     "home": {
       "editorial_source": "Maintainer-approved website brief; facts additionally grounded in the listed project sources.",
       "external_sources": [],
-      "source_files": [
-        {
-          "path": "../rtnls_registration/sample/image1.png",
-          "sha256": "d9e701b4d550a6be27887c376a60b9b0375d6b1a443c9b9de15be5f86142b8a2",
-          "revision": "f63722865fb60626e25ba801322a161c1aaca68f",
-          "dirty": false
-        },
-        {
-          "path": "../rtnls_vascx/samples/figures/caliber.png",
-          "sha256": "09a5af34bab7e9f5e2192589e91ab49bb3337abe7ba6fc7dd09d06fbd5748a0e",
-          "revision": "c7eee75151ea648ff0207d69c4902fa79c942870",
-          "dirty": false
-        }
-      ],
+      "source_files": [],
       "notes": [],
       "reviewed_at": "2026-09-23",
-      "blueprint_sha256": "bb97b67d37dbe8d9098d6d8324081c86e43c0e52fb3d03c475754e6fb0306763",
-      "content_sha256": "3edf5bc04741aff3dce631311d3028efd98121dd4a90f0c4f86e6048d5a244f2",
-      "dependencies_sha256": "c85904224d63bc117bbc4a0051b6b038da9ace1c938a9bd07e7f43bd6e8416ac"
+      "blueprint_sha256": "21c818914961618fabdd673cff0fdf62d4249967d18f1949556b644d71c7f0d8",
+      "content_sha256": "fafab8947559a8de263b2ee0c19c7f8ca5b7c95e4c14088817120e0c3a6d0bd8",
+      "dependencies_sha256": "b01ed14c4d96a84189fb8217e0adfaa4596a1cfa637797584d1c4729f51948a2"
     },
     "software": {
       "editorial_source": "Maintainer-approved website brief; facts additionally grounded in the listed project sources.",
@@ -30,9 +17,9 @@
       "source_files": [],
       "notes": [],
       "reviewed_at": "2026-09-23",
-      "blueprint_sha256": "95f8d9718de7b65e38b47ef93331883e90a23e7ac7a124c517704385d49a3a9c",
-      "content_sha256": "c8c457456e64e7556367e9f4990397280178c316ec69572c099520c779ec4213",
-      "dependencies_sha256": "2347e98a548e22586d1df57edbb212d7897a1f97c6843cec7fef6b530f32f1ab"
+      "blueprint_sha256": "df1554e6abd0f75675e28be86cbfa294fe027bb031adea2d39ec3cd2ecd29fac",
+      "content_sha256": "8a9a6c79fe49a2b67a8bdc19d62af051fc44dd150bae961b8b6ac1bfc8c112ba",
+      "dependencies_sha256": "f046a04c227a8152d368ada1d81ff242e126ffe0500ddd410089b2923883591b"
     },
     "retinalysis-vascx": {
       "editorial_source": "Maintainer-approved website brief; facts additionally grounded in the listed project sources.",
@@ -72,8 +59,8 @@
       ],
       "notes": [],
       "reviewed_at": "2026-09-23",
-      "blueprint_sha256": "26452ec2a7c66054fc4bcb31f1bb4a8ec83f53700c37448078915c952b727bba",
-      "content_sha256": "85cda6cb8e87fe408a761293268aa78537680f669548e32053ff4ad0691b2639",
+      "blueprint_sha256": "5c50b2668e47b1c95e7e9ca6130b9deb2b15527a57e103242964dc0d3d8e27da",
+      "content_sha256": "1d5d66439e7372d13d7de36f4a8bc6797dce9b399a62035d6af0adf957f9a50c",
       "dependencies_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
     },
     "retinalysis-registration": {
@@ -120,8 +107,8 @@
       ],
       "notes": [],
       "reviewed_at": "2026-09-23",
-      "blueprint_sha256": "cc1791c833f7c91d72e7230d3fb4dbee5b526900d755855c619da76b7ba06c83",
-      "content_sha256": "1f4473e0bd9afbf2ef8079547cc9da6f0998f199b93e1742e096d1ad98112f40",
+      "blueprint_sha256": "d9ceb40c68a1b953c40c57d0c5ecc0696d85dc8a67f9759e1ee309ded30058b1",
+      "content_sha256": "148cec5217fdbe5fe202a7e2e522cece0427496f7260ef580020b1ed2dc80792",
       "dependencies_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
     },
     "retinalysis-models": {
@@ -151,8 +138,8 @@
         "GitHub API could not resolve public Eyened/retinalysis-models. Public source/docs CTA omitted until a verified URL is provided."
       ],
       "reviewed_at": "2026-09-23",
-      "blueprint_sha256": "68cf711845b049dff691635307dc60a1290f1b56d18ec55ceb00f39e8ddd5dae",
-      "content_sha256": "20fca839966dfa66753874ea5f98ed00cf31eaf16db068b74f2ba8cf95457809",
+      "blueprint_sha256": "1dc1489cfd8e999d93c876575d7590d67a8bef7a65a1addb6c326ab81550b7bd",
+      "content_sha256": "e764d07041cffa33682b40103b096ee64658350c49827ad0cc0ac30ae6c80d69",
       "dependencies_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
     },
     "retinalysis-inference": {
@@ -168,8 +155,8 @@
       ],
       "notes": [],
       "reviewed_at": "2026-09-23",
-      "blueprint_sha256": "530f57dd744f201290af0424aeac46b8828addefe8afa40127514c1e34081e49",
-      "content_sha256": "93cf4116e342005ad08ee9b60b09f7f20a9516ce60b604a0cceab04850adbb94",
+      "blueprint_sha256": "a443624691fe4d1d837a29f04f6f4a52b072c4d127e7fa766cdd15cf0eb48267",
+      "content_sha256": "e6abe78c5400cefb1affc48c95711d5dc8bffd7566ffebbfc76502e0e650cec6",
       "dependencies_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
     },
     "models": {
@@ -178,9 +165,9 @@
       "source_files": [],
       "notes": [],
       "reviewed_at": "2026-09-23",
-      "blueprint_sha256": "98d0284c9bd85b479baf09fa147d73eb8b35ce4c48d9b4f52a2f17ea26dbb7d0",
-      "content_sha256": "bf386f18f3c529210f74f1dc4f65790d83813fcd04bef13a75b1bb8848988be8",
-      "dependencies_sha256": "4f5578576a3a5f94ffc8ca412fec50deff927091bf685b90c291296eb9a79c9e"
+      "blueprint_sha256": "12979807ec9df9c9ccee7fba37ee70e971c0a561fbb83d72501062e968037217",
+      "content_sha256": "049026480cb6c20798b21a09d690ad247d73b5292d3b570182893c0203f609c5",
+      "dependencies_sha256": "97863406aa7ace88b99af5663a4562bf219641b48c806fb1bf40613315d83c43"
     },
     "color-fundus": {
       "editorial_source": "Maintainer-approved website brief; facts additionally grounded in the listed project sources.",
@@ -188,9 +175,9 @@
       "source_files": [],
       "notes": [],
       "reviewed_at": "2026-09-23",
-      "blueprint_sha256": "ff5d4b0d8a14e38c5f86fe262e9a7fe1ab8327ff0c4a86df0a88b051e7fe9d7f",
-      "content_sha256": "b97b87ca89978bc612b7ab98a361c98bcf9c8fc23552f9af30b4b76a6512fc1e",
-      "dependencies_sha256": "ea51bcecc9f571f7929bf8bb6f0b60a8bc545cbd54a6ed2d5c9794b102cded0c"
+      "blueprint_sha256": "0306b40c8eb4f8be50f04a6d54ac78f33f2bc050214bf52cf8dd0270e65d0fea",
+      "content_sha256": "7bf16a754de28fab1a4a52d9e749099164950ee3cd02567b726494709233018d",
+      "dependencies_sha256": "91a7acbff65dc02968d7ffe93aef95c5f2a50332720b7d863b75369785d8dc2c"
     },
     "od-segmentation": {
       "editorial_source": "Maintainer-approved website brief; facts additionally grounded in the listed project sources.",
@@ -198,8 +185,8 @@
       "source_files": [],
       "notes": [],
       "reviewed_at": "2026-09-23",
-      "blueprint_sha256": "c2638df14e19cf78542583932d90e4dc09e68a65c62e2be9b1a016fb34fc9807",
-      "content_sha256": "46e45ebb68ac4d857e87d56aca6f0e4c409852b69e4ef4b89a9bbb3ac7c9ce30",
+      "blueprint_sha256": "82defcf607a974efa9caea85e585f30f5e3c389758e1acb3149da51a36d7b375",
+      "content_sha256": "a7bd1e1171f18d5c8471488688ed635aa5142d361b07289ed1bafb7d964d09f9",
       "dependencies_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
     },
     "fovea-localisation": {
@@ -208,8 +195,8 @@
       "source_files": [],
       "notes": [],
       "reviewed_at": "2026-09-23",
-      "blueprint_sha256": "fb9ae5278353eae06f82ead3400be5e6a8daa8ee6ce03cbc88aae81f415745ef",
-      "content_sha256": "eeddf3a86217258c6f772573fc0028a5b296b794460f627cf07fc1fff31cfa23",
+      "blueprint_sha256": "ffa70fd8e508ccb782374a8a9d3d9391b713c98bc367936d6cf358879e13f314",
+      "content_sha256": "48099124c3cc05a8f4a540e513189e4719da21517b25584ce1326ae810428155",
       "dependencies_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
     },
     "av-segmentation": {
@@ -218,8 +205,8 @@
       "source_files": [],
       "notes": [],
       "reviewed_at": "2026-09-23",
-      "blueprint_sha256": "0314f5a050cee82138b6ebffc108a3b31a58d0e29111c77fd093e4237d16879f",
-      "content_sha256": "5932914a204df180a54bd24c009d5f6134f98693dbc13514015521bbad63cbaf",
+      "blueprint_sha256": "b4274e87883b619040d22d369b5d2303e8b2a730bd8d91fdca4d60eb0a1caf78",
+      "content_sha256": "e472a9bb41868de125a40302c1d82890cb25682fdf2f0fb0988ad53a1d72ff39",
       "dependencies_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
     },
     "quality-estimation": {
@@ -228,8 +215,8 @@
       "source_files": [],
       "notes": [],
       "reviewed_at": "2026-09-23",
-      "blueprint_sha256": "58707959f5b408f2267e806e085b537994d61e45961a785d055223ac7916ea39",
-      "content_sha256": "4d49cab3a66a9a544947b402ad18c574da5d8e32db182fc51116fc7ddd6a2b1a",
+      "blueprint_sha256": "454d5f5d0a40f95aa88040c6dd037e9d7ad623c61fef00744eeef7723a1acd6d",
+      "content_sha256": "88608d1ddd65c0f7eaaeb50906d02f58f8f9b05b3576b10e2c7a3795e29ef491",
       "dependencies_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
     },
     "oct": {
@@ -238,8 +225,8 @@
       "source_files": [],
       "notes": [],
       "reviewed_at": "2026-09-23",
-      "blueprint_sha256": "808139e2538234ca2143e117bf0821298682b0e3d2ede38b552e4d4f2dd35120",
-      "content_sha256": "86fefa9270fb1a5ea79ef3e92bc04e4f6af0d20cc7fd5c796b750d1d1f4e88e0",
+      "blueprint_sha256": "d4f8aa64bf9b721da72344a50eb7507051552413b75a03ed8949d85df8a779d3",
+      "content_sha256": "ddf8977e10fdb26fac5470fa53cc56a573c7b8a9329968c56bd8644cf1dff22b",
       "dependencies_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
     },
     "datasets": {
@@ -248,9 +235,9 @@
       "source_files": [],
       "notes": [],
       "reviewed_at": "2026-09-23",
-      "blueprint_sha256": "bb14644d2e8ea0e6e1eb83910d9ca148db9f353d8c03d2d2a75c4ffb7eb0cfcf",
-      "content_sha256": "57fe211a4a3de8ba05f87cd55e7191ee7f1af2d74c1e1ff4e61084f5895b238d",
-      "dependencies_sha256": "648b937f203730a23594c212dfa30611dca788adcae92c99cc8a5a3f7b9cd42f"
+      "blueprint_sha256": "291cffd76f8f194c456f8943298192d450801353e0471f5160e55d7c5247a24d",
+      "content_sha256": "bc34c335ed7fc6afdb120f6a03c76ca5eb473263b7cfa3219e98237014990fc8",
+      "dependencies_sha256": "f403f5ca562e4a51acfa1973c1ddac08bc4dfcc4917c4fb4bfe9027d87cf72db"
     },
     "rav": {
       "editorial_source": "Maintainer-approved website brief; facts additionally grounded in the listed project sources.",
@@ -266,16 +253,16 @@
         {
           "path": "sources/rav-v2.pdf",
           "sha256": "4db3f38b92ecf4a18f679b4eedc8f26705463caf484d8f02bcc9b2981c2e760e",
-          "revision": null,
-          "dirty": null
+          "revision": "267ff2f6f56520ec36e9879f8490710d1f4d955c",
+          "dirty": false
         }
       ],
       "notes": [
         "Published PDF retained at sources/rav-v2.pdf. Local samples_paper.png does not match Figure 2 and was not used."
       ],
       "reviewed_at": "2026-09-23",
-      "blueprint_sha256": "1cc2e2d68cbd5b9f54683264210458b8a4e7570e9763f8e2cfdde3cbcb7c5e60",
-      "content_sha256": "b9dfa1f5570c7b98e54fc6249a92de1cf7dcd478851cc9beadec07123d7f76e4",
+      "blueprint_sha256": "f5e198b086b9189ef7123fc8ab420eacd6c7023bfea40be935aaf39a5fa9d59f",
+      "content_sha256": "ea5ced32d972c744de8f0a6a589587641e056957a591c31a7c8ff4d6744171ca",
       "dependencies_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
     }
   },
@@ -292,7 +279,7 @@
       "transformation": "Resized to fit 1600 px; converted to lossless WebP.",
       "caption": "VascX caliber measurements, shown on the vessels and retinal regions used for analysis.",
       "alt": "Six fundus images with annotated vessel calibers and concentric measurement regions.",
-      "attribution": "VascX project \u00b7 documentation figure",
+      "attribution": "VascX project · documentation figure",
       "citation_url": "https://github.com/Eyened/retinalysis-vascx"
     },
     "vascx-tortuosity": {
@@ -307,7 +294,7 @@
       "transformation": "Resized to fit 1600 px; converted to lossless WebP.",
       "caption": "Vessel tortuosity visualized on the source images.",
       "alt": "Six retinal examples with vessel tortuosity measurements overlaid.",
-      "attribution": "VascX project \u00b7 documentation figure",
+      "attribution": "VascX project · documentation figure",
       "citation_url": "https://github.com/Eyened/retinalysis-vascx"
     },
     "registration-overlay": {
@@ -320,9 +307,9 @@
       "source_sha256": "53b8b47dd7223adfd65df5ee2e5968db41727b96ec4a39539bc181f36b852066",
       "location": "Saved PNG output of the cell containing plt.imshow(get_red_blue(image0T, image1)).",
       "transformation": "Resized to fit 1600 px; converted to lossless WebP.",
-      "caption": "Two retinal images aligned by registration. The red\u2013blue overlay makes correspondence and residual differences visible.",
+      "caption": "Two retinal images aligned by registration. The red–blue overlay makes correspondence and residual differences visible.",
       "alt": "Red and blue retinal image overlay after registration, with aligned vascular structures.",
-      "attribution": "Retinalysis registration \u00b7 Example notebook",
+      "attribution": "Retinalysis registration · Example notebook",
       "citation_url": "https://github.com/Eyened/retinalysis-registration/blob/master/Example.ipynb"
     },
     "rav-characteristics": {
@@ -337,7 +324,7 @@
       "transformation": "Embedded figure extracted from the published PDF; resized to fit 1600 px; lossless WebP. No scientific content changed.",
       "caption": "Figure 1. Characteristics of the 206 color fundus images in RAV.",
       "alt": "Histograms of imaging device, patient age, image quality, laterality, image centering and field of view.",
-      "attribution": "Vargas Quiros et al. \u00b7 RAV, arXiv:2512.17322v2",
+      "attribution": "Vargas Quiros et al. · RAV, arXiv:2512.17322v2",
       "citation_url": "https://arxiv.org/abs/2512.17322v2"
     },
     "rav-segmentations": {
@@ -350,9 +337,9 @@
       "source_sha256": "4db3f38b92ecf4a18f679b4eedc8f26705463caf484d8f02bcc9b2981c2e760e",
       "location": "Figure 2; PDF page 6; embedded image xref 48.",
       "transformation": "Embedded figure extracted from the published PDF; resized to fit 1600 px; lossless WebP. No scientific content changed.",
-      "caption": "Figure 2. Sample artery\u2013vein segmentations from RAV.",
+      "caption": "Figure 2. Sample artery–vein segmentations from RAV.",
       "alt": "Nine fundus images from the RAV paper with artery and vein annotation overlays.",
-      "attribution": "Vargas Quiros et al. \u00b7 RAV, arXiv:2512.17322v2",
+      "attribution": "Vargas Quiros et al. · RAV, arXiv:2512.17322v2",
       "citation_url": "https://arxiv.org/abs/2512.17322v2"
     },
     "retina-hero": {
@@ -365,9 +352,9 @@
       "source_sha256": "d9e701b4d550a6be27887c376a60b9b0375d6b1a443c9b9de15be5f86142b8a2",
       "location": "sample/image1.png",
       "transformation": "Converted RGB source to a web display derivative, resized proportionally to a maximum of 1200 pixels using Lanczos; WebP quality 92. No cropping or overlays. Original scientific example remains linked.",
-      "caption": "A retinal image from the registration package\u2019s example dataset.",
+      "caption": "A retinal image from the registration package’s example dataset.",
       "alt": "Color fundus image showing the optic disc and retinal vessels.",
-      "attribution": "Retinalysis registration \u00b7 bundled example image",
+      "attribution": "Retinalysis registration · bundled example image",
       "citation_url": "https://github.com/Eyened/retinalysis-registration"
     }
   }

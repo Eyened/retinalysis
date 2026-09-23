@@ -1,20 +1,22 @@
 ---
+id: rav
+title: Rotterdam artery–vein segmentation dataset
 slug: /datasets/rav
 ---
 import Link from '@docusaurus/Link';
-import {Page, Figure, Resources, CardGrid, HomeHero, SectionHeader, Publication} from '@site/src/components/Presentation';
+import {Page, Figure, Resources, Catalogue, Publication} from '@site/src/components/Presentation';
 
 <Page id="rav">
 
 <Resources id="rav" />
 
-## Diverse images. Connected annotations.
+## Dataset composition
 
 RAV contains **206 color fundus images** with artery–vein annotations, drawn mainly from the Rotterdam Study, with contributions from MYST and AMD-Life. It includes varied cameras, image quality and retinal fields, rather than only ideal photographs. [Source: paper, v2](https://arxiv.org/abs/2512.17322v2).
 
 <Figure id="rav-segmentations" />
 
-## What the annotations capture
+## Annotation process
 
 Graders separated vascular masks into arteries, veins and unknown vessels, corrected errors, and checked connectivity. Artery–vein crossings were labelled in both vessel masks. Images and segmentations are distributed at **1024 × 1024** resolution. [Annotation method](https://arxiv.org/abs/2512.17322v2).
 

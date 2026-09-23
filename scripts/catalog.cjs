@@ -101,7 +101,7 @@ function validate(data) {
       !Array.isArray(p.links)
     )
       fail(`Incomplete brief: ${p.id}`);
-    if (!/^src\/pages\/(?!.*\.\.)[^\s]+\.mdx$/.test(p.page_file || "")) {
+    if (!/^docs\/(?!.*\.\.)[^\s]+\.mdx$/.test(p.page_file || "")) {
       fail(`Unsafe page_file: ${p.id}`);
       continue;
     }
@@ -111,7 +111,7 @@ function validate(data) {
     if (p.status === "draft") {
       if (fs.existsSync(file))
         fail(
-          `Draft would publish a route: ${p.id}; keep draft content outside src/pages`,
+          `Draft would publish a route: ${p.id}; keep draft content outside docs`,
         );
       continue;
     }
@@ -122,6 +122,11 @@ function validate(data) {
     const text = fs.readFileSync(file, "utf8");
     if (!text.includes(`slug: ${p.route}\n`))
       fail(`Route differs from blueprint: ${p.id}`);
+    if (
+      !text.includes(`id: ${p.id}\n`) ||
+      !text.includes(`title: ${p.title}\n`)
+    )
+      fail(`Doc metadata differs from blueprint: ${p.id}`);
     if (!text.includes(`<Page id="${p.id}">`))
       fail(`Page identity differs: ${p.id}`);
     const record = provenance.pages[p.id];
@@ -162,7 +167,6 @@ function validate(data) {
         fail(`Placeholder figure not allowed: ${p.id}`);
     }
     const used = [...text.matchAll(/<Figure\s+id="([^"]+)"/g)].map((m) => m[1]);
-    if (p.id === "home" && text.includes("<HomeHero")) used.push("retina-hero");
     if (
       p.figure_policy === "none" &&
       (used.length || /<img\b|!\[[^\]]*\]\(/.test(text))
@@ -209,7 +213,7 @@ function validate(data) {
         fail(`Page not in blueprint: ${path.relative(dir, file)}`);
     }
   }
-  walk(path.join(dir, "src/pages"));
+  walk(path.join(dir, "docs"));
   for (const [id, a] of Object.entries(provenance.assets)) {
     if (!a.file?.startsWith("static/img/") || a.file.includes("..")) {
       fail(`Unsafe asset path: ${id}`);
