@@ -1,0 +1,52 @@
+---
+slug: /
+---
+import Link from '@docusaurus/Link';
+import {Page, Figure, Resources, CardGrid, HomeHero, SectionHeader, Publication} from '@site/src/components/Presentation';
+
+<Page id="home">
+
+<HomeHero />
+
+<section className="home-section wrap">
+<SectionHeader number="01" title="Software">
+<h2>Tools that connect images<br />to research questions.</h2>
+<p>Measure retinal vessels, align images, develop models or run existing releases. Each package has a distinct role in your analysis.</p>
+</SectionHeader>
+<CardGrid parent="software" />
+</section>
+
+<section className="home-section wrap">
+<div className="split-feature">
+<div className="feature-copy">
+<p className="eyebrow">02 / Explainable analysis</p>
+<h2>Understand the measurement.<br />Not just the number.</h2>
+<p>VascX places vascular measurements back on the retina. See which vessels and anatomical regions contribute, and inspect the image behind a result.</p>
+<div className="mini-labels"><span>Vascular structure</span><span>Anatomical context</span><span>Visual explanations</span></div>
+<Link className="text-link" to="/software/retinalysis-vascx">Discover VascX →</Link>
+</div>
+<div><Figure id="vascx-caliber" /></div>
+</div>
+</section>
+
+<section className="home-section wrap">
+<SectionHeader number="03" title="Models & datasets">
+<h2>Build on shared foundations.</h2>
+<p>Explore model cards as they become available, or find annotated reference data for your own work.</p>
+</SectionHeader>
+<div className="card-grid">
+<Link className="catalog-card" to="/models"><span className="card-top">Deep learning <span aria-hidden="true">↗</span></span><h3>Retinal model catalogue</h3><p>Color fundus imaging and OCT. Model cards are forthcoming.</p><span className="card-link">Explore models →</span></Link>
+<Link className="catalog-card" to="/datasets/rav"><span className="card-top">Reference data <span aria-hidden="true">↗</span></span><h3>The RAV dataset</h3><p>Color fundus images with detailed artery–vein annotations. Explore the dataset, its methodology and access.</p><span className="card-link">Explore RAV →</span></Link>
+</div>
+</section>
+
+<section className="home-section wrap">
+<SectionHeader number="04" title="The retinalysis approach"><h2>Made for questions worth asking.</h2></SectionHeader>
+<div className="principles">
+<div><h3>Robust analysis</h3><p>Make image variability and anatomical visibility part of the research workflow.</p></div>
+<div><h3>Explainable results</h3><p>Connect quantitative outputs to the retinal structures from which they are derived.</p></div>
+<div><h3>Evidence in context</h3><p>Follow the publications and model-specific validation before choosing a tool for your study.</p></div>
+</div>
+</section>
+
+</Page>

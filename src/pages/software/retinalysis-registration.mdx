@@ -1,0 +1,36 @@
+---
+slug: /software/retinalysis-registration
+---
+import Link from '@docusaurus/Link';
+import {Page, Figure, Resources, CardGrid, HomeHero, SectionHeader, Publication} from '@site/src/components/Presentation';
+
+<Page id="retinalysis-registration">
+
+<Resources id="retinalysis-registration" />
+
+## Follow the same structures across images
+
+Retinalysis registration estimates a spatial transformation between retinal images. This makes it useful when a study needs to align photographs or transfer image coordinates and annotations into a shared frame.
+
+<div className="facts">
+<div><h3>Work with</h3><p>A reference image and a target image, with optional spatial annotations.</p></div>
+<div><h3>Obtain</h3><p>A transformation that can be applied to images, masks and point coordinates.</p></div>
+</div>
+
+<Figure id="registration-overlay" />
+
+## Classical computer vision, no GPU required
+
+The method enhances vascular structure, detects and matches SIFT features, and estimates an image transformation. The implementation supports projective alignment with optional quadratic refinement. The example notebook demonstrates transforming a fundus image, a mask and point coordinates.
+
+## Modalities and evidence
+
+The documented example uses color fundus images. The implementation also includes a dedicated OCT angiography preprocessing path. That implementation capability is distinct from validation of a particular OCTA dataset or cross-modality pairing; these should be assessed for the intended study.
+
+The repository includes a [FIRE evaluation notebook](https://github.com/Eyened/retinalysis-registration/blob/master/FIRE%20-%20evaluation.ipynb). Inspect its experimental setup and results before applying benchmark conclusions to a new dataset.
+
+<Publication href="https://iovs.arvojournals.org/article.aspx?articleid=2816108" title="Registration research abstract · IOVS">
+<p>Publication linked by the package authors. The package documentation and example notebook provide the practical starting point.</p>
+</Publication>
+
+</Page>

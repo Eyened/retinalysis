@@ -1,0 +1,43 @@
+---
+slug: /software/retinalysis-vascx
+---
+import Link from '@docusaurus/Link';
+import {Page, Figure, Resources, CardGrid, HomeHero, SectionHeader, Publication} from '@site/src/components/Presentation';
+
+<Page id="retinalysis-vascx">
+
+<Resources id="retinalysis-vascx" />
+
+## From retinal structure to quantitative measurements
+
+VascX helps researchers extract vascular biomarkers from color fundus images. Its workflow connects image segmentation to measurements that can be visualized on the retina, making it possible to inspect how a number was obtained.
+
+<div className="facts">
+<div><h3>Work with</h3><p>Color fundus images, vascular segmentations and anatomical landmarks.</p></div>
+<div><h3>Obtain</h3><p>Vascular measurements and visualizations of their anatomical context.</p></div>
+</div>
+
+<Figure id="vascx-caliber" />
+
+## Choose measurements that fit your question
+
+- **Vessel caliber and central retinal equivalents:** summarize vessel width using configurable measurement definitions.
+- **Tortuosity and bifurcations:** describe vessel paths and branching geometry.
+- **Vascular density and sparsity:** characterize how the vasculature occupies a retinal region.
+- **Anatomical regions:** locate measurements relative to the optic disc and fovea. Measurements can be omitted when the required region is not visible.
+
+<Figure id="vascx-tortuosity" />
+
+## Inspect the result before interpreting it
+
+The package offers multiple definitions for several biomarkers. A study should specify its measurement settings and check both the input segmentation and the visible retinal region. A visualization supports inspection; it does not by itself establish accuracy for a new population or acquisition device.
+
+<Publication href="https://arxiv.org/abs/2602.08580" title="An explainable software toolbox for retinal vascular biomarkers">
+<p>The software preprint describes the biomarker toolbox and its measurement definitions.</p>
+</Publication>
+
+<Publication href="https://tvst.arvojournals.org/article.aspx?articleid=2810436" title="VascX Models: Deep Ensembles for Retinal Vascular Analysis">
+<p>The 2025 model paper concerns the ensembles evaluated in that publication. Its results should not be assumed to validate every subsequent model release.</p>
+</Publication>
+
+</Page>

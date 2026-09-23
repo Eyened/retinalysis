@@ -1,0 +1,33 @@
+---
+slug: /software/retinalysis-models
+---
+import Link from '@docusaurus/Link';
+import {Page, Figure, Resources, CardGrid, HomeHero, SectionHeader, Publication} from '@site/src/components/Presentation';
+
+<Page id="retinalysis-models">
+
+## Develop models around your research question
+
+Retinalysis models provides a shared training framework for retinal imaging research. It supports segmentation, classification, regression and keypoint localisation, with configuration files connecting data, transformations, model components and training settings.
+
+<div className="facts">
+<div><h3>Work with</h3><p>Training data, task-specific targets, model components and experiment configurations.</p></div>
+<div><h3>Obtain</h3><p>Trained checkpoints, evaluation outputs and model releases for inference.</p></div>
+</div>
+
+## A framework you can extend
+
+- **Reusable training workflows:** configure data loading, augmentation, optimization and checkpointing together.
+- **Project-specific components:** extend datasets, transforms and model modules to match a new research task.
+- **Model release:** package trained models and ensembles for downstream inference.
+- **Traceable evaluation:** use named metrics and experiment outputs to inspect a training run.
+
+## Separate model development from model use
+
+The training package works alongside [retinalysis-inference](/software/retinalysis-inference), which handles model releases and prediction workflows. This separation helps researchers reuse trained models without rebuilding the training experiment.
+
+The framework remains under development. Its available tasks are capabilities of the software, not a claim that every model trained with it has been validated. Dataset choice, evaluation design and performance remain responsibilities of each model study.
+
+<Link className="text-link" to="/software/retinalysis-inference">Explore the inference package →</Link>
+
+</Page>

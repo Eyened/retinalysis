@@ -1,0 +1,7 @@
+node_modules/
+build/
+.docusaurus/
+playwright-report/
+test-results/
+.DS_Store
+.env
