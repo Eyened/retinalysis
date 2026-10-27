@@ -1,0 +1,4 @@
+# Optional local sync configuration: copy this file to model-cards.yaml.
+# Map each copied Markdown filename to the absolute path of its source card.
+# Add only cards used by the website. An empty mapping copies nothing.
+{}

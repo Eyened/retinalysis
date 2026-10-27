@@ -1,23 +1,24 @@
 ---
-id: retinalysis-inference
 title: retinalysis-inference
 slug: /software/retinalysis-inference
+sidebar_position: 4
 ---
-import Link from '@docusaurus/Link';
-import {Page, Figure, Resources, Catalogue, Publication} from '@site/src/components/Presentation';
 
-<Page id="retinalysis-inference">
-
-<Resources id="retinalysis-inference" />
+- [Documentation](https://github.com/Eyened/retinalysis-inference#readme)
+- [Source code](https://github.com/Eyened/retinalysis-inference)
+- [Model releases](https://huggingface.co/Eyened/vascx)
 
 ## Purpose
 
 Retinalysis inference brings released retinal models into an image-analysis workflow. It combines model loading, the expected preprocessing and ensemble prediction, so research code can work with a consistent interface.
 
-<div className="facts">
-<div><h3>Inputs</h3><p>Model releases and image datasets, supplied as tables or preprocessed inputs.</p></div>
-<div><h3>Outputs</h3><p>Predictions, ensemble aggregates and inspectable model intermediates.</p></div>
-</div>
+### Inputs
+
+Model releases and image datasets, supplied as tables or preprocessed inputs.
+
+### Outputs
+
+Predictions, ensemble aggregates and inspectable model intermediates.
 
 ## Capabilities
 
@@ -32,6 +33,4 @@ High-level spatial outputs use the package’s canonical preprocessed geometry, 
 
 This is an execution library. Validation performance and suitable populations belong to the individual model and evaluation study. Consult the release documentation for preprocessing and hardware requirements.
 
-<Link className="text-link" to="/models">Model catalogue</Link>
-
-</Page>
+[Model catalogue](/models/color-fundus)

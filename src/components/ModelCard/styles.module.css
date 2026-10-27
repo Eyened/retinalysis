@@ -1,0 +1,221 @@
+.card {
+  margin: 1.5rem 0 2rem;
+  border: 1px solid color-mix(in srgb, var(--ifm-color-primary) 25%, var(--ifm-color-emphasis-200));
+  border-top: 3px solid var(--ifm-color-primary);
+  border-radius: 12px;
+  background: #fffbed;
+  box-shadow: none;
+  font-size: 0.925rem;
+  line-height: 1.65;
+  overflow-wrap: anywhere;
+}
+
+.content {
+  --card-padding-y: 1rem;
+  --card-padding-x: 1.25rem;
+  display: flow-root;
+  padding: var(--card-padding-y) var(--card-padding-x);
+}
+
+[data-theme="dark"] .card {
+  background: #302d22;
+}
+
+.name {
+  float: right;
+  max-width: 55%;
+  margin: calc(-1 * var(--card-padding-y)) calc(-1 * var(--card-padding-x)) 0.4rem 0.85rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 0 10px 0 10px;
+  background: var(--ifm-color-primary);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 650;
+  letter-spacing: 0.02em;
+}
+
+.section {
+  display: block;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.section:first-child,
+.name + .section { padding-top: 0; }
+.section:last-child { padding-bottom: 0; border-bottom: 0; }
+
+.section > :last-child,
+.body > :last-child {
+  margin-bottom: 0;
+}
+
+.label {
+  color: var(--ifm-heading-color);
+  font-weight: 650;
+}
+
+.body .label::before,
+.content > .label::before {
+  content: "";
+  display: block;
+  margin-top: 0.75rem;
+}
+
+.section > .label::before,
+.content > .label:first-child::before,
+.name + .label::before {
+  content: none;
+}
+
+.paragraph {
+  margin: 0.4rem 0 0.65rem;
+}
+
+.section > .label + .paragraph,
+.section > .label + .description,
+.body .label + .paragraph {
+  display: inline;
+}
+
+.description {
+  margin: 0.4rem 0 0.65rem;
+}
+
+.description summary {
+  display: inline;
+  cursor: pointer;
+}
+
+.description summary::-webkit-details-marker {
+  display: none;
+}
+
+.more,
+.less {
+  color: var(--ifm-link-color);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  white-space: nowrap;
+}
+
+.less,
+.description[open] .more,
+.description[open] .preview {
+  display: none;
+}
+
+.description[open] .less {
+  display: inline;
+}
+
+.body {
+  margin-top: 0.5rem;
+}
+
+.card table {
+  margin: 0.6rem 0;
+  font-size: 0.875rem;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.card th,
+.card td {
+  padding: 0.4rem 0.6rem;
+}
+
+.card ul,
+.card ol {
+  margin-top: 0.4rem;
+  margin-bottom: 0.65rem;
+}
+
+.thumbnail {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  margin: 0.3rem 0.5rem 0.3rem 0;
+  max-width: 100%;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 6px;
+  background: var(--ifm-background-color);
+  cursor: zoom-in;
+  vertical-align: middle;
+}
+
+.thumbnail img {
+  display: block;
+  max-width: min(180px, 100%);
+  max-height: 110px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 3px;
+}
+
+.thumbnail:hover {
+  border-color: var(--ifm-color-primary);
+}
+
+.thumbnail:focus-visible,
+.close:focus-visible,
+.description summary:focus-visible {
+  outline: 2px solid var(--ifm-color-primary);
+  outline-offset: 3px;
+}
+
+.dialog {
+  max-width: 94vw;
+  max-height: 94vh;
+  padding: 0;
+  border: none;
+  border-radius: 10px;
+  background: var(--ifm-background-surface-color);
+  color: var(--ifm-font-color-base);
+  box-shadow: 0 16px 60px #0005;
+}
+
+.dialog::backdrop {
+  background: #101820b8;
+}
+
+.dialogContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  gap: 0.75rem;
+}
+
+.close {
+  align-self: flex-end;
+  padding: 0.3rem 0.65rem;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 4px;
+  background: var(--ifm-background-color);
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.9rem;
+}
+
+.dialogContent img {
+  max-width: 100%;
+  max-height: 74vh;
+  object-fit: contain;
+}
+
+.caption {
+  max-width: 70ch;
+  margin: 0;
+  font-size: 0.875rem;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .content { --card-padding-y: 0.85rem; --card-padding-x: 0.85rem; }
+  .dialogContent { padding: 0.75rem; }
+}

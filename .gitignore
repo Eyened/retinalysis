@@ -1,7 +1,13 @@
+# Dependencies and generated site/test output (including test fixtures).
 node_modules/
 build/
 .docusaurus/
 playwright-report/
 test-results/
+
+# Machine-specific configuration and local instructions.
 .DS_Store
 .env
+.env.*
+AGENTS.md
+/model-cards.yaml

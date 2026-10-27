@@ -1,14 +1,4 @@
 import type { Config } from "@docusaurus/types";
-import fs from "node:fs";
-import path from "node:path";
-import { parse } from "yaml";
-const blueprint = parse(
-  fs.readFileSync(path.join(__dirname, "blueprint.yaml"), "utf8"),
-);
-const sections = blueprint.pages.filter(
-  (p: { status: string; parent: string | null }) =>
-    p.status !== "draft" && p.parent === null,
-);
 const config: Config = {
   title: "Retinalysis",
   tagline: "Tools for retinal image analysis",
@@ -19,9 +9,19 @@ const config: Config = {
   trailingSlash: true,
   favicon: "img/mark.svg",
   onBrokenLinks: "throw",
-  markdown: { hooks: { onBrokenMarkdownLinks: "throw" } },
+  markdown: {
+    format: "detect",
+    hooks: { onBrokenMarkdownLinks: "throw" },
+    async parseFrontMatter(params) {
+      const parsed = await params.defaultParseFrontMatter(params);
+      // Imported HF cards retain their original YAML on disk. Their metadata
+      // does not describe the enclosing Docusaurus document.
+      return params.filePath.replaceAll("\\", "/").includes("/docs/model_cards/")
+        ? { ...parsed, frontMatter: {} }
+        : parsed;
+    },
+  },
   i18n: { defaultLocale: "en", locales: ["en"] },
-  plugins: [require.resolve("./plugins/catalog.cjs")],
   presets: [
     [
       "classic",
@@ -29,6 +29,14 @@ const config: Config = {
         docs: {
           path: "docs",
           routeBasePath: "/",
+          rehypePlugins: [require("./scripts/model-card-sections.cjs")],
+          exclude: [
+            "**/_*.{js,jsx,ts,tsx,md,mdx}",
+            "**/_*/**",
+            "**/*.test.{js,jsx,ts,tsx}",
+            "**/__tests__/**",
+            "model_cards/**",
+          ],
           sidebarPath: require.resolve("./sidebars.cjs"),
         },
         blog: false,
@@ -42,12 +50,25 @@ const config: Config = {
     navbar: {
       title: "Retinalysis",
       items: [
-        ...sections.map((p: { id: string; title: string }) => ({
+        { type: "doc", docId: "index", label: "Home", position: "left" },
+        {
           type: "docSidebar",
-          sidebarId: p.id,
-          label: p.id === "home" ? "Home" : p.title,
+          sidebarId: "software",
+          label: "Software",
           position: "left",
-        })),
+        },
+        {
+          type: "docSidebar",
+          sidebarId: "models",
+          label: "Deep learning models",
+          position: "left",
+        },
+        {
+          type: "docSidebar",
+          sidebarId: "datasets",
+          label: "Datasets",
+          position: "left",
+        },
         {
           href: "https://github.com/Eyened/retinalysis",
           label: "GitHub",

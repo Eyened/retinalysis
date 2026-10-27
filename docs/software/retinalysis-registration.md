@@ -1,25 +1,28 @@
 ---
-id: retinalysis-registration
 title: retinalysis-registration
 slug: /software/retinalysis-registration
+sidebar_position: 2
 ---
-import Link from '@docusaurus/Link';
-import {Page, Figure, Resources, Catalogue, Publication} from '@site/src/components/Presentation';
 
-<Page id="retinalysis-registration">
-
-<Resources id="retinalysis-registration" />
+- [Documentation](https://github.com/Eyened/retinalysis-registration#readme)
+- [Source code](https://github.com/Eyened/retinalysis-registration)
+- [Example notebook](https://github.com/Eyened/retinalysis-registration/blob/master/Example.ipynb)
 
 ## Image registration
 
 Retinalysis registration estimates a spatial transformation between retinal images. This makes it useful when a study needs to align photographs or transfer image coordinates and annotations into a shared frame.
 
-<div className="facts">
-<div><h3>Inputs</h3><p>A reference image and a target image, with optional spatial annotations.</p></div>
-<div><h3>Outputs</h3><p>A transformation that can be applied to images, masks and point coordinates.</p></div>
-</div>
+### Inputs
 
-<Figure id="registration-overlay" />
+A reference image and a target image, with optional spatial annotations.
+
+### Outputs
+
+A transformation that can be applied to images, masks and point coordinates.
+
+![Red and blue retinal image overlay after registration, with aligned vascular structures.](/img/registration-overlay.webp)
+
+Two retinal images aligned by registration. The red–blue overlay makes correspondence and residual differences visible. [Retinalysis registration · Example notebook](https://github.com/Eyened/retinalysis-registration/blob/master/Example.ipynb)
 
 ## Method
 
@@ -31,8 +34,6 @@ The documented example uses color fundus images. The implementation also include
 
 The repository includes a [FIRE evaluation notebook](https://github.com/Eyened/retinalysis-registration/blob/master/FIRE%20-%20evaluation.ipynb). Inspect its experimental setup and results before applying benchmark conclusions to a new dataset.
 
-<Publication href="https://iovs.arvojournals.org/article.aspx?articleid=2816108" title="Registration research abstract · IOVS">
-<p>Publication linked by the package authors. The package documentation and example notebook provide the practical starting point.</p>
-</Publication>
+### [Registration research abstract · IOVS](https://iovs.arvojournals.org/article.aspx?articleid=2816108)
 
-</Page>
+Publication linked by the package authors. The package documentation and example notebook provide the practical starting point.

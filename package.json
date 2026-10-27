@@ -8,14 +8,12 @@
   "packageManager": "npm@10.8.2",
   "scripts": {
     "start": "docusaurus start --host 0.0.0.0",
-    "build": "npm run content:validate && docusaurus build",
+    "build": "docusaurus build",
     "serve": "docusaurus serve --host 0.0.0.0",
     "typecheck": "tsc --noEmit",
-    "content:status": "node scripts/status.cjs",
-    "content:validate": "node scripts/validate.cjs",
-    "test": "node --test tests/content.test.cjs",
+    "test": "node --test tests/*.test.cjs",
     "test:browser": "playwright test",
-    "content:record": "node scripts/record.cjs"
+    "models:sync": "node scripts/sync-model-cards.cjs"
   },
   "dependencies": {
     "@docusaurus/core": "3.10.2",

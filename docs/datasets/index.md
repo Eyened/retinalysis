@@ -1,15 +1,10 @@
 ---
-id: datasets
 title: Datasets
 slug: /datasets
+sidebar_position: 0
+sidebar_label: Datasets overview
 ---
-import Link from '@docusaurus/Link';
-import {Page, Figure, Resources, Catalogue, Publication} from '@site/src/components/Presentation';
 
-<Page id="datasets">
-
-<Catalogue parent="datasets" />
+- [Rotterdam artery–vein segmentation dataset](/datasets/rav) — Color fundus images with artery–vein annotations.
 
 Reference datasets make it possible to inspect annotation methods, develop new approaches and evaluate them against a shared resource. Each dataset page links to its publication and access conditions.
-
-</Page>

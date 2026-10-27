@@ -1,10 +1,28 @@
 import { test, expect } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 import fs from "node:fs";
-import YAML from "yaml";
-const entries = YAML.parse(
-  fs.readFileSync("blueprint.yaml", "utf8"),
-).pages.filter((p: any) => p.status !== "draft");
+// Use the metadata from the production build, including Docusaurus's default
+// routes and titles. No second page catalogue or mandatory slug is needed.
+const published = new Set(
+  JSON.parse(fs.readFileSync(".docusaurus/globalData.json", "utf8"))
+    ["docusaurus-plugin-content-docs"].default.versions
+    .flatMap((version: { docs: { id: string }[] }) => version.docs.map((doc) => doc.id)),
+);
+const metadataDir = ".docusaurus/docusaurus-plugin-content-docs/default";
+const entries = fs.readdirSync(metadataDir)
+  .filter((file) => file.endsWith(".json"))
+  .map((file) => JSON.parse(fs.readFileSync(`${metadataDir}/${file}`, "utf8")))
+  .filter((doc) => published.has(doc.id) && !doc.draft && doc.source?.startsWith("@site/docs/")
+    && fs.existsSync(doc.source.replace("@site/", "")))
+  .map((doc) => {
+    const text = fs.readFileSync(doc.source.replace("@site/", ""), "utf8");
+    return {
+      id: doc.id.replaceAll("/", "-"),
+      title: doc.frontMatter.sidebar_label ?? doc.title,
+      route: doc.slug,
+      hasCard: text.includes("<ModelCard "),
+    };
+  });
 for (const entry of entries) {
   test(entry.id, async ({ page }, info) => {
     const errors: string[] = [];
@@ -33,14 +51,52 @@ for (const entry of entries) {
         await img.evaluate((el: HTMLImageElement) => el.naturalWidth),
       ).toBeGreaterThan(0);
     }
-    if (entry.status === "placeholder") {
-      await expect(page.locator(".page-body")).toHaveText(
-        "Model card forthcoming.",
-      );
+    if (entry.route === "/models/oct") {
+      await expect(page.getByText("Model card forthcoming.", { exact: true })).toBeVisible();
       await expect(page.locator("main img")).toHaveCount(0);
     }
-    if (["retinalysis-models", "retinalysis-inference"].includes(entry.id))
+    if (["/software/retinalysis-models", "/software/retinalysis-inference"].includes(entry.route))
       await expect(page.locator("main img")).toHaveCount(0);
+    if (entry.hasCard) {
+      for (const card of await page.locator("[data-model-card]").all()) {
+        await expect(card).toBeVisible();
+        await expect(card.locator("h1, h2, h3, h4, h5, h6")).toHaveCount(0);
+        await expect(card.locator("[data-model-card-heading]").first()).toBeVisible();
+        // Check real imported cards, not just the isolated rendering fixture.
+        // Missing Markdown grouping previously left every section inline.
+        const sections = await card.locator("[data-model-card-section]").all();
+        expect(sections.length).toBeGreaterThan(0);
+        for (let i = 1; i < sections.length; i++) {
+          const previous = (await sections[i - 1].boundingBox())!;
+          const current = (await sections[i].boundingBox())!;
+          expect(current.y).toBeGreaterThanOrEqual(previous.y + previous.height - 1);
+        }
+        await expect(card).toHaveCSS("box-shadow", "none");
+        await expect(card).toHaveCSS("background-color", "rgb(255, 251, 237)");
+        const tab = card.locator("[data-model-card-name]");
+        if (await tab.count()) {
+          const tabBounds = (await tab.boundingBox())!;
+          const headingBounds = await card.locator("[data-model-card-heading]").first().evaluate((element) => {
+            const range = document.createRange();
+            range.selectNodeContents(element);
+            return range.getBoundingClientRect().toJSON();
+          });
+          expect(headingBounds.y).toBeLessThan(tabBounds.y + tabBounds.height);
+        }
+        const inference = card.getByRole("region", { name: "Inference", exact: true });
+        if (await inference.locator("pre").count()) {
+          await expect(inference.locator("summary")).toHaveCount(1);
+          await expect(inference.locator("pre").first()).not.toBeVisible();
+          await inference.locator("summary").click();
+          await expect(inference.locator("pre").last()).toBeVisible();
+          await expect(inference.locator("li details")).toHaveCount(0);
+          await inference.locator("summary").click();
+          await expect(inference.locator("pre").last()).not.toBeVisible();
+        }
+      }
+      await expect(page.locator("main")).not.toContainText("/home/jose");
+      await expect(page.locator("main")).not.toContainText("library_name:");
+    }
     const links = await page
       .locator("a[href]")
       .evaluateAll((nodes) =>
@@ -59,7 +115,7 @@ for (const entry of entries) {
       .analyze();
     expect(a11y.violations).toEqual([]);
     expect(errors).toEqual([]);
-    if (["home", "retinalysis-vascx", "rav"].includes(entry.id))
+    if (["/", "/software/retinalysis-vascx", "/datasets/rav", "/models/color-fundus/av-segmentation", "/models/color-fundus"].includes(entry.route))
       await page.screenshot({
         path: info.outputPath(`${entry.id}.png`),
         fullPage: true,
@@ -93,7 +149,9 @@ test("keyboard navigation and mobile menu", async ({ page }, info) => {
 });
 
 test("section hierarchy uses native docs sidebars", async ({ page }, info) => {
-  await page.goto("/retinalysis/models/color-fundus/od-segmentation/");
+  const selected = entries.find((entry) => entry.hasCard)
+    ?? entries.find((entry) => entry.route === "/models/color-fundus")!;
+  await page.goto(`/retinalysis${selected.route}/`);
   const navbar = page.locator(".navbar");
   await expect(
     navbar.getByRole("link", { name: "retinalysis-vascx", exact: true }),
@@ -107,20 +165,15 @@ test("section hierarchy uses native docs sidebars", async ({ page }, info) => {
   await expect(
     sidebar.getByRole("link", { name: "Color fundus imaging", exact: true }),
   ).toBeVisible();
-  for (const name of [
-    "OD segmentation",
-    "Fovea localisation",
-    "A/V segmentation",
-    "Quality estimation",
-    "OCT",
-  ])
+  const modelTitles = entries.filter((entry) => entry.route.startsWith("/models/")).map((entry) => entry.title);
+  for (const name of modelTitles)
     await expect(
       sidebar.getByRole("link", { name, exact: true }),
     ).toBeVisible();
   await expect(
     sidebar
       .locator("a.menu__link--active")
-      .filter({ hasText: "OD segmentation" }),
+      .filter({ hasText: selected.title }),
   ).toBeVisible();
   if (info.project.name === "desktop") {
     await navbar.getByRole("link", { name: "Software", exact: true }).click();
@@ -132,7 +185,15 @@ test("section hierarchy uses native docs sidebars", async ({ page }, info) => {
     await expect(
       page
         .locator("aside")
-        .getByRole("link", { name: "OD segmentation", exact: true }),
+        .getByRole("link", { name: selected.title, exact: true }),
     ).toHaveCount(0);
+  }
+});
+
+
+test("copied model-card assets do not publish document routes", async ({ request }) => {
+  for (const name of fs.readdirSync("docs/model_cards").filter((file) => file.endsWith(".md"))) {
+    const response = await request.get(`/retinalysis/model_cards/${name.slice(0, -3)}/`);
+    expect(response.status()).toBe(404);
   }
 });
