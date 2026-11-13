@@ -12,7 +12,7 @@ Robust artery-vein segmentation on color fundus images.
 
 ## Training data
 
-The model was trained on [HRF-AV](https://www.sciencedirect.com/science/article/pii/S1361841521003856), [Les-AV](https://link.springer.com/chapter/10.1007/978-3-030-00934-2_8), [RITE](https://ieeexplore.ieee.org/document/6627847), [Leuven-Haifa](https://www.nature.com/articles/s41597-024-03086-6), and on images from the Rotterdam Study.
+The model was trained on [HRF-AV](https://www.sciencedirect.com/science/article/pii/S1361841521003856), [Les-AV](https://link.springer.com/chapter/10.1007/978-3-030-00934-2_8), [RITE](https://ieeexplore.ieee.org/document/6627847), [Leuven-Haifa](https://www.nature.com/articles/s41597-024-03086-6), IOSTAR, and on images from the Rotterdam Study.
 
 ## Training procedure
 
@@ -45,7 +45,7 @@ We recommend to run inference using [retinalysis-inference](https://github.com/E
         HeatmapRegressionEnsemble,
         SegmentationEnsemble,
     )
-    ensemble = SegmentationEnsemble.from_huggingface("Eyened/vascx:disc/av_july24.pt").to(device)
+    ensemble = SegmentationEnsemble.from_huggingface("Eyened/vascx:artery_vein/av_july24.pt").to(device)
     ```
 
 3. Run inference:
@@ -68,14 +68,20 @@ For more information see [retinalysis-inference](https://github.com/Eyened/retin
 
 ## License & citation
 
-If you use this model, please consider citing:
+If you use this model, please consider citing, based on relevance:
 
 - [VascX Models: Deep Ensembles for Retinal Vascular Analysis From Color Fundus Images](https://tvst.arvojournals.org/article.aspx?articleid=2810436)
-Vargas Quiros, J. D., Liefers, B., van Garderen, K. A., Vermeulen, J. P., & Klaver, C. C. W. (2025). VascX Models: Deep Ensembles for Retinal Vascular Analysis From Color Fundus Images. Translational Vision Science & Technology, 14(7), 19-19.
+
+    Vargas Quiros, J. D., Liefers, B., van Garderen, K. A., Vermeulen, J. P., & Klaver, C. C. W. (2025). VascX Models: Deep Ensembles for Retinal Vascular Analysis From Color Fundus Images. Translational Vision Science & Technology, 14(7), 19-19.
 
 - [retinalysis-vascx: An explainable software toolbox for the extraction of retinal vascular biomarkers](https://arxiv.org/abs/2602.08580)
-Vargas Quiros, J. V., Beyeler, M. J., Vela, S. O., Center, E. R., Bergmann, S., Klaver, C. C. W., & Liefers, B. (2026). retinalysis-vascx: An explainable software toolbox for the extraction of retinal vascular biomarkers. arXiv preprint arXiv:2602.08580.
 
-The [Leuven-Haifa](https://www.nature.com/articles/s41597-024-03086-6) is a large part of the training data for this model, and we encourage users to consider citing it separately:
+    Vargas Quiros, J. V., Beyeler, M. J., Vela, S. O., Center, E. R., Bergmann, S., Klaver, C. C. W., & Liefers, B. (2026). retinalysis-vascx: An explainable software toolbox for the extraction of retinal vascular biomarkers. arXiv preprint arXiv:2602.08580.
+
+- The [Leuven-Haifa dataset](https://www.nature.com/articles/s41597-024-03086-6) is a large part of the training data for this model, and we encourage users to consider citing it separately:
+
+    Van Eijgen, Jan; Fhima, Jonathan; Behar, Joachim A.; Christinaki, Eirini; Stalmans, Ingeborg, 2023, "The Leuven-Haifa High-Resolution Fundus Image Dataset for Retinal Blood Vessel Segmentation and Glaucoma Diagnosis", https://doi.org/10.48804/Z7SHGO, KU Leuven RDR, V7
+
+Van Eijgen, J., Fhima, J., Billen Moulin-Romsée, MI. et al. Leuven-Haifa High-Resolution Fundus Image Dataset for Retinal Blood Vessel Segmentation and Glaucoma Diagnosis. Sci Data 11, 257 (2024). https://doi.org/10.1038/s41597-024-03086-6
 
 We share the model under a Creative Commons Attribution–NonCommercial 4.0 license. We note that some of the datasets used for training and evaluating the model ensemble were made publicly available for research purposes, but do not include a license. Other such as [Leuven-Haifa](https://www.nature.com/articles/s41597-024-03086-6) explicitly use custom terms with non-commercial clauses. 

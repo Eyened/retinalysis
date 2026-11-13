@@ -104,6 +104,22 @@ All source paths and destinations are checked before copying; unavailable source
 
 Review and commit copied assets alongside the manually maintained pages. `npm run build` and CI use the local copies and do not access source repositories. Editing a document never requires synchronization; editing an external model card does.
 
+## Repository READMEs
+
+A software page can display a repository's README instead of hand-written content. The copies live in `docs/_readmes/`, which is excluded from routes like the model-card folder, and are refreshed by the same explicit command.
+
+Create the optional, Git-ignored configuration with `cp readmes.example.yaml readmes.yaml` and map each copied filename to the absolute path of its source README. The filename must be the GitHub repository name, for example `retinalysis-inference.md`. `npm run models:sync` then copies the configured READMEs byte-for-byte after the model cards; without `readmes.yaml` it copies none.
+
+Display a README by importing it in an `.mdx` document, which keeps its own title, route and any surrounding prose:
+
+```mdx
+import Readme from '@site/docs/_readmes/retinalysis-inference.md';
+
+<Readme />
+```
+
+`scripts/readme-pages.cjs` adapts the copy during compilation without changing the file: it drops the README's leading H1, because the document owns the title, points repository-relative links and images at `https://github.com/Eyened/<repository>` on its default branch, and renders GitHub alerts such as `> [!TIP]` as admonitions. Review and commit the copied README alongside the page.
+
 ## Evidence and historical records
 
 Preserve version-specific evaluation claims and citations when editing documentation. Do not fill missing model-card content automatically. The configured cards currently contain empty sections for their authors to complete.

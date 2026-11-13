@@ -2,30 +2,32 @@ const fs = require("node:fs");
 const path = require("node:path");
 const YAML = require("yaml");
 
-function syncModelCards(root = path.resolve(__dirname, "..")) {
+// Copy the Markdown files listed in one local configuration into one asset folder.
+function syncAssets(root, { configName, assetFolder, label, optional = false }) {
   root = path.resolve(root);
   let sourceConfig;
   try {
-    sourceConfig = fs.readFileSync(path.join(root, "model-cards.yaml"), "utf8");
+    sourceConfig = fs.readFileSync(path.join(root, configName), "utf8");
   } catch (error) {
     if (error.code === "ENOENT") {
-      throw new Error("Copy model-cards.example.yaml to model-cards.yaml and configure source paths before running models:sync.", { cause: error });
+      if (optional) return { configured: 0, written: [] };
+      throw new Error(`Copy ${configName.replace(".yaml", ".example.yaml")} to ${configName} and configure source paths before running models:sync.`, { cause: error });
     }
     throw error;
   }
   const config = YAML.parse(sourceConfig);
   if (!config || typeof config !== "object" || Array.isArray(config)) {
-    throw new Error("model-cards.yaml must map asset filenames to absolute source paths.");
+    throw new Error(`${configName} must map asset filenames to absolute source paths.`);
   }
-  const assetDir = path.join(root, "docs/model_cards");
+  const assetDir = path.join(root, assetFolder);
   const copies = [];
   // Check every source and destination before modifying any copied asset.
   for (const [name, source] of Object.entries(config)) {
     if (!/^[a-zA-Z0-9][\w-]*(?:\/[a-zA-Z0-9][\w-]*)*\.md$/.test(name)) {
-      throw new Error(`Invalid model-card asset filename: ${name}`);
+      throw new Error(`Invalid ${label} asset filename: ${name}`);
     }
     if (typeof source !== "string" || !path.isAbsolute(source)) {
-      throw new Error(`Model-card source must be an absolute path: ${name}`);
+      throw new Error(`${label[0].toUpperCase()}${label.slice(1)} source must be an absolute path: ${name}`);
     }
     const destination = path.join(assetDir, name);
     // Do not follow links out of the managed asset folder.
@@ -44,7 +46,7 @@ function syncModelCards(root = path.resolve(__dirname, "..")) {
     try {
       bytes = fs.readFileSync(source);
     } catch (error) {
-      throw new Error(`Cannot read model card for ${name}: ${source}`, { cause: error });
+      throw new Error(`Cannot read ${label.replace("-", " ")} for ${name}: ${source}`, { cause: error });
     }
     copies.push({ destination, bytes });
   }
@@ -60,13 +62,25 @@ function syncModelCards(root = path.resolve(__dirname, "..")) {
   return { configured: copies.length, written };
 }
 
+function syncModelCards(root = path.resolve(__dirname, "..")) {
+  return syncAssets(root, { configName: "model-cards.yaml", assetFolder: "docs/model_cards", label: "model-card" });
+}
+
+// Repository READMEs shown as documents. The copied filename is the GitHub
+// repository name, which scripts/readme-pages.cjs uses to resolve links.
+function syncReadmes(root = path.resolve(__dirname, "..")) {
+  return syncAssets(root, { configName: "readmes.yaml", assetFolder: "docs/_readmes", label: "README", optional: true });
+}
+
 if (require.main === module) {
   try {
-    const result = syncModelCards();
-    console.log(`Model cards: ${result.configured} configured, ${result.written.length} copied.`);
+    const cards = syncModelCards();
+    console.log(`Model cards: ${cards.configured} configured, ${cards.written.length} copied.`);
+    const readmes = syncReadmes();
+    console.log(`READMEs: ${readmes.configured} configured, ${readmes.written.length} copied.`);
   } catch (error) {
     console.error(error.message);
     process.exitCode = 1;
   }
 }
-module.exports = { syncModelCards };
+module.exports = { syncModelCards, syncReadmes };

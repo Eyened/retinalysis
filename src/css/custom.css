@@ -11,3 +11,8 @@
   --ifm-color-primary-darker: #1e4b8b;
   --ifm-color-primary-darkest: #193e73;
 }
+
+/* The default code theme's comment colour fails WCAG AA contrast on its dark background. */
+.theme-code-block .token.comment {
+  color: #a6accd !important;
+}

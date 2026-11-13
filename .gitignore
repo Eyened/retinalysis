@@ -11,3 +11,4 @@ test-results/
 .env.*
 AGENTS.md
 /model-cards.yaml
+/readmes.yaml

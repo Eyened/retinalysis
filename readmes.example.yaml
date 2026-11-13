@@ -1,0 +1,4 @@
+# Optional local sync configuration: copy this file to readmes.yaml.
+# Map each copied filename to the absolute path of its source README. The
+# filename must be the GitHub repository name, e.g. retinalysis-inference.md.
+{}

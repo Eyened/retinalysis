@@ -37,10 +37,9 @@ We recommend to run inference using [retinalysis-inference](https://github.com/E
 2. Load the ensemble:
     ```
     from rtnls_inference import (
-        HeatmapRegressionEnsemble,
-        SegmentationEnsemble,
+        ClassificationEnsemble,
     )
-    ensemble = SegmentationEnsemble.from_huggingface("Eyened/vascx:disc/av_july24.pt").to(device)
+    ensemble = ClassificationEnsemble.from_huggingface("Eyened/vascx:quality/quality.pt").to(device)
     ```
 
 3. Run inference:
@@ -55,7 +54,7 @@ We recommend to run inference using [retinalysis-inference](https://github.com/E
     # 3. Run the ensemble.
     predictions = ensemble.predict_batch(batch)
 
-    # 4. Postprocess the prediction into a final mask.
+    # 4. Postprocess the prediction into the final quality prediction.
     result = ensemble.postprocess_batch(predictions, batch)[0]
     ```
 

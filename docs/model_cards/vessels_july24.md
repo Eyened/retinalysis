@@ -46,7 +46,7 @@ We recommend to run inference using [retinalysis-inference](https://github.com/E
         HeatmapRegressionEnsemble,
         SegmentationEnsemble,
     )
-    ensemble = SegmentationEnsemble.from_huggingface("Eyened/vascx:disc/av_july24.pt").to(device)
+    ensemble = SegmentationEnsemble.from_huggingface("Eyened/vascx:vessels/vessels_july24.pt").to(device)
     ```
 
 3. Run inference:
@@ -76,5 +76,11 @@ Vargas Quiros, J. D., Liefers, B., van Garderen, K. A., Vermeulen, J. P., & Klav
 
 - [retinalysis-vascx: An explainable software toolbox for the extraction of retinal vascular biomarkers](https://arxiv.org/abs/2602.08580)
 Vargas Quiros, J. V., Beyeler, M. J., Vela, S. O., Center, E. R., Bergmann, S., Klaver, C. C. W., & Liefers, B. (2026). retinalysis-vascx: An explainable software toolbox for the extraction of retinal vascular biomarkers. arXiv preprint arXiv:2602.08580.
+
+- The [FIVES](https://www.nature.com/articles/s41597-022-01564-3) and [Leuven-Haifa](https://www.nature.com/articles/s41597-024-03086-6) datasets together are a large part of the training data for this model, and we encourage users to consider citing them separately:
+
+    Jin K, Huang X, Zhou J, Li Y, Yan Y, Sun Y, Zhang Q, Wang Y, Ye J. FIVES: A fundus image dataset for artificial intelligence based vessel segmentation. Scientific data. 2022 Aug 4;9(1):475.
+
+    Van Eijgen J, Fhima J, Billen Moulin-Romsée MI, Behar JA, Christinaki E, Stalmans I. Leuven-haifa high-resolution fundus image dataset for retinal blood vessel segmentation and glaucoma diagnosis. Scientific data. 2024 Feb 29;11(1):257.
 
 We share the model under a Creative Commons Attribution–NonCommercial 4.0 license. We note that some of the datasets used for training and evaluating the model ensemble were made publicly available for research purposes, but do not include a license. Other such as [Leuven-Haifa](https://www.nature.com/articles/s41597-024-03086-6) explicitly use custom terms with non-commercial clauses. 

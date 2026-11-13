@@ -40,7 +40,7 @@ We recommend to run inference using [retinalysis-inference](https://github.com/E
         HeatmapRegressionEnsemble,
         SegmentationEnsemble,
     )
-    ensemble = SegmentationEnsemble.from_huggingface("Eyened/vascx:disc/fovea_july24.pt").to(device)
+    ensemble = HeatmapRegressionEnsemble.from_huggingface("Eyened/vascx:fovea/fovea_july24.pt").to(device)
     ```
 
 3. Run inference:
@@ -55,7 +55,7 @@ We recommend to run inference using [retinalysis-inference](https://github.com/E
     # 3. Run the ensemble.
     predictions = ensemble.predict_batch(batch)
 
-    # 4. Postprocess the prediction into a final mask.
+    # 4. Postprocess the prediction into the final fovea coordinates.
     result = ensemble.postprocess_batch(predictions, batch)[0]
     ```
 

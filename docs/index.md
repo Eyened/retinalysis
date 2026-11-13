@@ -9,11 +9,10 @@ Retinalysis brings together software, deep learning models and datasets for robu
 
 ## Software
 
-The packages cover vascular measurements, image registration, model training and inference. Detailed installation instructions, APIs and examples are maintained in each package's documentation.
+The packages cover vascular measurements, image registration and model inference. Detailed installation instructions, APIs and examples are maintained in each package's documentation.
 
 - [retinalysis-vascx](/software/retinalysis-vascx) — Vascular biomarker measurements and visualizations.
 - [retinalysis-registration](/software/retinalysis-registration) — Spatial registration of retinal images.
-- [retinalysis-models](/software/retinalysis-models) — Training, evaluation and release of retinal deep learning models.
 - [retinalysis-inference](/software/retinalysis-inference) — Preprocessing and prediction using model releases.
 
 ## Deep learning models

@@ -55,7 +55,7 @@ for (const entry of entries) {
       await expect(page.getByText("Model card forthcoming.", { exact: true })).toBeVisible();
       await expect(page.locator("main img")).toHaveCount(0);
     }
-    if (["/software/retinalysis-models", "/software/retinalysis-inference"].includes(entry.route))
+    if (entry.route === "/software/retinalysis-inference")
       await expect(page.locator("main img")).toHaveCount(0);
     if (entry.hasCard) {
       for (const card of await page.locator("[data-model-card]").all()) {

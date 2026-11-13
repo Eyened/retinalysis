@@ -29,6 +29,8 @@ const config: Config = {
         docs: {
           path: "docs",
           routeBasePath: "/",
+          // Runs first so Docusaurus never resolves README links against this site.
+          beforeDefaultRemarkPlugins: [require("./scripts/readme-pages.cjs")],
           rehypePlugins: [require("./scripts/model-card-sections.cjs")],
           exclude: [
             "**/_*.{js,jsx,ts,tsx,md,mdx}",
